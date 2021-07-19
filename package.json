@@ -1,0 +1,50 @@
+{
+  "name": "react-floating-balloons",
+  "version": "1.0.0",
+  "description": "Floating colorful balloons with custom names",
+  "main": "index.js",
+  "dependencies": {
+    "styled-components": "^5.3.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.14.5",
+    "@babel/core": "^7.14.6",
+    "@babel/preset-env": "^7.14.7",
+    "@babel/preset-react": "^7.14.5",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.2.2",
+    "css-loader": "^6.1.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "style-loader": "^3.1.0",
+    "webpack": "^5.45.1",
+    "webpack-cli": "^3.1.0",
+    "webpack-dev-server": "^3.1.8"
+  },
+  "peerDependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "scripts": {
+    "demo": "webpack-dev-server --inline --hot --config demo/webpack.config.js --content-base demo/",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sanishkr/react-floating-balloons.git"
+  },
+  "keywords": [
+    "react",
+    "balloons",
+    "floating",
+    "birthday",
+    "animation",
+    "colorful"
+  ],
+  "author": "SNS",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sanishkr/react-floating-balloons/issues"
+  },
+  "homepage": "https://github.com/sanishkr/react-floating-balloons#readme"
+}
