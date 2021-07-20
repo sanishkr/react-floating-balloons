@@ -27,7 +27,7 @@
   "scripts": {
     "build": "babel src/index.js --out-file dist.js",
     "demo": "webpack-dev-server --inline --hot --config demo/webpack.config.js --content-base demo/",
-    "prepublish": "npm run test && npm run build",
+    "prepublish": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

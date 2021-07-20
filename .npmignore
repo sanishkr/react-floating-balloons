@@ -1,0 +1,7 @@
+# Folders
+node_modules
+demo
+src
+
+# Files
+.gitignore
