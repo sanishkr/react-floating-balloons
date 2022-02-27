@@ -1,5 +1,5 @@
 .balloon {
-    --balloonDimension: 20vmax; /* 15% of min(viewport width, height) */
+    --balloonDimension: 15vmax; /* 15% of min(viewport width, height) */
     width: var(--balloonDimension);
     height: var(--balloonDimension);
     border-radius: 100% 100% 15% 100%;
@@ -9,6 +9,11 @@
     bottom: calc(-1 * var(--balloonDimension));
     left: 0;
     background-color: aqua;
+    display: none;
+}
+.show {
+    display: block;
+    visibility: visible;
 }
 .balloon::before {
     content: "";
@@ -41,6 +46,14 @@
     transform: rotateZ(-45deg);
     top: calc(var(--balloonDimension) - 6px);
     left: calc(var(--balloonDimension) - 8px);
+}
+.balloon .msg {
+    color: #fff;
+    font-family: cursive;
+    position: absolute;
+    top: 30%;
+    left: 28%;
+    transform: rotate(302deg);
 }
 .yellow{
     background-color: rgba(150, 150, 0, .45);
