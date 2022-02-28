@@ -67,3 +67,9 @@
 .red{
     background-color: rgba(150, 0, 0, .45);
 }
+.orange{
+    background-color: rgba(150, 47, 0, 0.45);
+}
+.purple{
+    background-color: rgba(77, 0, 150, 0.45);
+}

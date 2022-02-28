@@ -29,14 +29,15 @@ const ReactFloatingBalloons = ({
 
 export { ReactFloatingBalloons };
 
+const bdayBallons = function ({count, msgText, colors, popVolumeLevel} = {count:7, msgText: 'Happy Birthday.', colors: ['yellow', 'green', 'blue', 'red', 'orange', 'purple'], popVolumeLevel: 0.2}) {
 // const bdayBallons = function ({density, balloons = [], colors}) {
-const bdayBallons = function () {
-	const density = 10; // concurrent balloon count
+// const bdayBallons = function () {
+	const density = count; // concurrent balloon count
 	const balloons = [];
-	const colors = ['yellow', 'green', 'blue', 'red'];
-	const msgText = 'Happy Birthday.'
+	// const colors = ['yellow', 'green', 'blue', 'red', 'orange', 'purple'];
+	// const msgText = 'Happy Birthday.'
 	let audio = new Audio('https://soundbible.com/mp3/Balloon%20Popping-SoundBible.com-1247261379.mp3');
-	audio.volume = 0.2;
+	audio.volume = popVolumeLevel;
 
 	const stringElement = document.createElement('div');
 	stringElement.classList.add('string');

@@ -1,7 +1,7 @@
 {
   "name": "react-floating-balloons",
   "version": "2.0.1",
-  "description": "Floating colorful balloons with custom names",
+  "description": "Floating colorful balloons with custom names and popping feature",
   "main": "dist/index.js",
   "dependencies": {
     "@mojs/core": "^1.3.0"
@@ -42,12 +42,14 @@
     "floating",
     "birthday",
     "animation",
-    "colorful"
+    "colorful",
+    "pop",
+    "burst",
   ],
   "author": "SNS",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/sanishkr/react-floating-balloons/issues"
   },
-  "homepage": "https://github.com/sanishkr/react-floating-balloons#readme"
+  "homepage": "https://codesandbox.io/s/react-floating-balloons-basic-example-4cx9kh"
 }
