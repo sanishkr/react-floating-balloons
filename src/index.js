@@ -8,9 +8,11 @@ import './index.css';
 
 const ReactFloatingBalloons = ({
 	count = 7,
+	msgText = 'Happy Birthday.',
+	colors = ['yellow', 'green', 'blue', 'red', 'orange', 'purple'],
+	popVolumeLevel = 0.2,
 	duration = 10000,
 	delay = 100,
-	colors = ['yellow', 'green', 'blue', 'red'],
 	loop = true,
 	name,
 }) => {
@@ -22,14 +24,14 @@ const ReactFloatingBalloons = ({
 		setCSR(true)
 	}, []);
 	return createPortal(
-		<div id='portal-balloons'>{CSR ? bdayBallons() : null}</div>,
+		<div id='portal-balloons'>{CSR ? bdayBallons({count, msgText, colors, popVolumeLevel}) : null}</div>,
 		document.body
 	);
 };
 
 export { ReactFloatingBalloons };
 
-const bdayBallons = function ({count, msgText, colors, popVolumeLevel} = {count:7, msgText: 'Happy Birthday.', colors: ['yellow', 'green', 'blue', 'red', 'orange', 'purple'], popVolumeLevel: 0.2}) {
+const bdayBallons = function ({count, msgText, colors, popVolumeLevel}) {
 // const bdayBallons = function ({density, balloons = [], colors}) {
 // const bdayBallons = function () {
 	const density = count; // concurrent balloon count
