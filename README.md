@@ -1,7 +1,7 @@
 # React Floating Balloons 🎈💥
 
 **Version Updates**
-- [2.1.0] : Add optional custom props `count, msgText, colors, popVolumeLevel`
+- [2.1.1] : Add optional custom props `count, msgText, colors, popVolumeLevel`
 - [2.0.2] : Add 2 new colors `orange, purple`
 - [2.0.1] : Pop event on single click for touch screen devices
 - [2.0.0] : Added Pop animation and Sound
