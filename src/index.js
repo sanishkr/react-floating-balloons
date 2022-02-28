@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { createPortal } from 'react-dom';
 import mojs from "@mojs/core";
 
 import {random, randomColor} from './utils'
@@ -13,19 +14,24 @@ const ReactFloatingBalloons = ({
 	loop = true,
 	name,
 }) => {
+	const [CSR, setCSR] = React.useState(false)
 	React.useEffect(() => {
-        // console.log({count, loop, name});
-		bdayBallons(count, [], colors);
-		bdayBallons();
+    // console.log({count, loop, name});
+		// bdayBallons(count, [], colors);
+		// bdayBallons();
+		setCSR(true)
 	}, []);
-	return null;
+	return createPortal(
+		<div id='portal-balloons'>{CSR ? bdayBallons() : null}</div>,
+		document.body
+	);
 };
 
 export { ReactFloatingBalloons };
 
 // const bdayBallons = function ({density, balloons = [], colors}) {
 const bdayBallons = function () {
-	const density = 5; // concurrent balloon count
+	const density = 10; // concurrent balloon count
 	const balloons = [];
 	const colors = ['yellow', 'green', 'blue', 'red'];
 	const msgText = 'Happy Birthday.'
@@ -55,8 +61,10 @@ const bdayBallons = function () {
 		if(t.classList.contains('balloon')) {
 			audio.play();
 			t.style.visibility = 'hidden';
+			setTimeout(() => {
+				t.classList.toggle('show');
+			}, 2000)
 			// burst.style.visibility = 'visible'
-			// t.classList.toggle('show');
 			// t.append(burst.cloneNode())
 			// console.log(t.classList)
 		} else {
@@ -71,7 +79,12 @@ const bdayBallons = function () {
 		const element = document.createElement('div');
 		element.classList.add('balloon', 'show');
 		element.classList.add(randomColor(colors))
-		element.addEventListener('dblclick', popBalloon);
+		let supportsTouch = 'ontouchstart' in window || navigator.msMaxTouchPoints;
+		if(supportsTouch) {
+			element.addEventListener('click', popBalloon);
+		} else {
+			element.addEventListener('dblclick', popBalloon);
+		}
 
 		element.append(stringElement.cloneNode());
 		element.append(msgElement.cloneNode(random(0,2)===0));

@@ -2,6 +2,7 @@
 
 
 **Update**
+- [2.0.1] : Pop event on single click for touch screen devices
 - [2.0.0] : Added Pop animation and Sound
 
 ##
