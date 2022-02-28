@@ -39,7 +39,7 @@ class App extends React.Component {
           </h1>
         </div>
         
-        <ReactFloatingBalloons/>
+        <ReactFloatingBalloons count={3} msgText='Yayy!!' colors={['yellow', 'green']} popVolumeLevel={1} />
       </div>
     );
   }
