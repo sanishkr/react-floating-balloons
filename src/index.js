@@ -3,6 +3,7 @@ import { createPortal } from 'react-dom';
 import mojs from "@mojs/core";
 
 import {random, randomColor} from './utils'
+import {Balloon} from './Balloon.styles';
 
 import './index.css';
 
@@ -24,7 +25,8 @@ const ReactFloatingBalloons = ({
 		setCSR(true)
 	}, []);
 	return createPortal(
-		<div id='portal-balloons'>{CSR ? bdayBallons({count, msgText, colors, popVolumeLevel}) : null}</div>,
+		<div id='portal-balloons'>{CSR ? <Balloon color='red'/> : null}</div>,
+		// <div id='portal-balloons'>{CSR ? bdayBallons({count, msgText, colors, popVolumeLevel}) : null}</div>,
 		document.body
 	);
 };
