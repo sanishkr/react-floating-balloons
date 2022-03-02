@@ -1,4 +1,48 @@
-import styled from "styled-components";
+import styled, {keyframes} from "styled-components";
+
+const balloons = ({x,y, left, rotate}) => {
+  console.log({x,y, left, rotate});
+  return keyframes`
+  {
+    0%{ 
+      // offset: ${y / -200};
+      // bottom: -100px;
+      top: 100vh;
+      left: ${`${left}vw`};
+      transform: rotateZ(0);
+      // transform: ${`rotateZ(45deg) translate(0, 0)`};
+    }
+    25%{ 
+      // offset: ${(x + y) / -200};
+      top: 65vh;
+      left: ${`${left-20}vw`};
+      transform: ${`rotate(${45}deg)`};
+      // transform: ${`rotateZ(45deg) translate(${30}vw, ${70}vh)`};
+    }
+    50%{
+      // offset: ${(-100 + x) / -200};
+      top: 40vh;
+      left: ${`${left+40}vw`};
+      // transform: ${`rotate(${-4}deg)`};
+			// transform: ${`rotateZ(45deg) translate(${70}vw, 30vh)`};
+    }
+    75%{
+      // offset: ${(-100 + x) / -200};
+      top: 20vh;
+      left: ${`${left-30}vw`};
+      transform: ${`rotate(${45}deg)`};
+			// transform: ${`rotateZ(45deg) translate(${70}vw, 30vh)`};
+    }
+    100%{
+      // offset: 1;
+      top: -40vh;
+      left: ${`${left+50}vw`};
+      // transform: ${`rotate(${-4}deg)`};
+			// transform: ${`rotateZ(45deg) translate(-100vw, -100vh)`};
+    }
+  }
+`
+};
 
 const colorMaps = {
   yellow: 'rgba(150, 150, 0, .45)',
@@ -10,7 +54,18 @@ const colorMaps = {
 }
 
 export const Balloon = styled.div`
-  background-color: ${props => colorMaps[props.color]}
+  // top: 100px;
+  background-color: ${props => colorMaps[props.color]};
+  display: ${props => props.show ? 'block' : 'none'};
+  visibility: ${props => props.show ? 'visible' : 'hidden'};
+  left: ${props => `${props.animate.left}vw`};
+  transition: transform 0.5s ease;
+  z-index: 10;
+  animation: ${props => balloons(props.animate)} ease-in-out infinite;
+  // animation-duration: 3s;
+  animation-duration: ${props => `${props.animate.duration/1000}s`};
+  animation-delay ${props => `${props.animate.delay/1000}s`};
+  transform-origin:bottom center;
   --balloonDimension: 15vmax; /* 15% of min(viewport width, height) */
   width: var(--balloonDimension);
   height: var(--balloonDimension);
@@ -19,8 +74,6 @@ export const Balloon = styled.div`
   transform: rotateZ(45deg);
   position: fixed;
   bottom: calc(-1 * var(--balloonDimension));
-  left: 0;
-  display: none;
   &::before {
     content: "";
     width: 10%;
