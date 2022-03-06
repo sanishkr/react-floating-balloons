@@ -1,70 +1,86 @@
 import styled, {keyframes} from "styled-components";
+import { random } from "./utils";
 
-const balloons = ({x,y, left, rotate}) => {
-  console.log({x,y, left, rotate});
+const balloonsLeftUpKFAnimation = ({x,y, left, rotate}) => {
+  // console.log({x,y, left, rotate});
   return keyframes`
   {
     0%{ 
-      // offset: ${y / -200};
-      // bottom: -100px;
       top: 100vh;
       left: ${`${left}vw`};
-      transform: rotateZ(0);
-      // transform: ${`rotateZ(45deg) translate(0, 0)`};
     }
-    25%{ 
-      // offset: ${(x + y) / -200};
-      top: 65vh;
-      left: ${`${left-20}vw`};
-      transform: ${`rotate(${45}deg)`};
-      // transform: ${`rotateZ(45deg) translate(${30}vw, ${70}vh)`};
+    15%{ 
+      top: ${`${random(70,80)}vh`};
+      left: ${`${left-random(10,20)}vw`};
     }
-    50%{
-      // offset: ${(-100 + x) / -200};
-      top: 40vh;
-      left: ${`${left+40}vw`};
-      // transform: ${`rotate(${-4}deg)`};
-			// transform: ${`rotateZ(45deg) translate(${70}vw, 30vh)`};
+    25%{
+      top: ${`${random(45,55)}vh`};
+      left: ${`${left+random(15,20)}vw`};
     }
-    75%{
-      // offset: ${(-100 + x) / -200};
-      top: 20vh;
-      left: ${`${left-30}vw`};
-      transform: ${`rotate(${45}deg)`};
-			// transform: ${`rotateZ(45deg) translate(${70}vw, 30vh)`};
+    45%{
+      top: ${`${random(25,40)}vh`};
+      left: ${`${left-random(20,30)}vw`};
+    }
+    80%{
+      top: ${`${random(5,15)}vh`};
+      left: ${`${left+random(20,30)}vw`};
     }
     100%{
-      // offset: 1;
-      top: -40vh;
-      left: ${`${left+50}vw`};
-      // transform: ${`rotate(${-4}deg)`};
-			// transform: ${`rotateZ(45deg) translate(-100vw, -100vh)`};
+      top: ${`${random(-60,-70)}vh`};
+      left: ${`${left-random(30,50)}vw`};
+    }
+  }
+`
+};
+const balloonsRightUpKFAnimation = ({x,y, left, rotate}) => {
+  // console.log({x,y, left, rotate});
+  return keyframes`
+  {
+    0%{ 
+      top: 100vh;
+      left: ${`${left}vw`};
+    }
+    30%{ 
+      top: ${`${random(60,70)}vh`};
+      left: ${`${left-random(10,30)}vw`};
+    }
+    55%{
+      top: ${`${random(30,40)}vh`};
+      left: ${`${left+random(5,20)}vw`};
+    }
+    70%{
+      top: ${`${random(10,20)}vh`};
+      left: ${`${left-random(20,30)}vw`};
+    }
+    100%{
+      top: ${`${random(-60,-70)}vh`};
+      left: ${`${left+random(30,50)}vw`};
     }
   }
 `
 };
 
 const colorMaps = {
-  yellow: 'rgba(150, 150, 0, .45)',
-  blue: 'rgba(0, 0, 150, .45)',
-  purple: 'rgba(77, 0, 150, 0.45)',
-  green: 'rgba(0, 150, 0, .45)',
-  orange: 'rgba(150, 47, 0, 0.45)',
-  red: 'rgba(150, 0, 0, .45)',
+  yellow: 'rgba(150, 150, 0, .75)',
+  blue: 'rgba(0, 0, 150, .75)',
+  purple: 'rgba(77, 0, 150, 0.75)',
+  green: 'rgba(0, 150, 0, .75)',
+  orange: 'rgba(150, 47, 0, 0.75)',
+  red: 'rgba(150, 0, 0, .75)',
 }
 
-export const Balloon = styled.div`
+export const StyledBalloon = styled.div`
   // top: 100px;
   background-color: ${props => colorMaps[props.color]};
   display: ${props => props.show ? 'block' : 'none'};
-  visibility: ${props => props.show ? 'visible' : 'hidden'};
+  visibility: ${props => props.visible ? 'visible' : 'hidden'};
   left: ${props => `${props.animate.left}vw`};
   transition: transform 0.5s ease;
   z-index: 10;
-  animation: ${props => balloons(props.animate)} ease-in-out infinite;
+  animation: ${props => props.animate.left > 50 ? balloonsRightUpKFAnimation(props.animate): balloonsLeftUpKFAnimation(props.animate)} ease-in-out ${props => props.animate.loop ? 'infinite' : '1'};
   // animation-duration: 3s;
-  animation-duration: ${props => `${props.animate.duration/1000}s`};
-  animation-delay ${props => `${props.animate.delay/1000}s`};
+  animation-duration: ${props => `${props.animate.duration}s`};
+  animation-delay ${props => `${props.animate.delay}s`};
   transform-origin:bottom center;
   --balloonDimension: 15vmax; /* 15% of min(viewport width, height) */
   width: var(--balloonDimension);
@@ -97,9 +113,9 @@ export const Balloon = styled.div`
   }
   .string {
     position: absolute;
-    background-color: #990;
+    background-color: #e2e204;
     border-radius: 50%/100px 100px 0 0;
-    width: 2px;
+    width: 4px;
     height: calc(var(--balloonDimension) * .6);
     transform-origin: top center;
     transform: rotateZ(-45deg);
@@ -113,6 +129,10 @@ export const Balloon = styled.div`
     top: 30%;
     left: 28%;
     transform: rotate(302deg);
+  }
+  .show {
+    display: block;
+    visibility: visible;
   }
 `;
 
