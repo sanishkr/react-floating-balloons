@@ -26,6 +26,9 @@ npm install --save react-floating-balloons
 
 [![Edit react-floating-balloons-basic-example](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/react-floating-balloons-basic-example-4cx9kh?fontsize=14&hidenavigation=1&theme=dark)
 
+### NextJS Example(^v3.0.0)
+[![Edit nextjs-react-floating-balloons-example](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/nextjs-react-floating-balloons-example-di5dhp?fontsize=14&hidenavigation=1&theme=dark&view=preview)
+
 ### Props
 
 | Name        | Type                                   | Required | Options | Default | Description                                              |
@@ -51,7 +54,7 @@ npm install --save react-floating-balloons
 
 ##
 
-Note for NextJS Usage upto v2.x.x: Use `next-global-css` npm module setup and use dynamic import feature with `{ ssr: false }` to avoid errors
+Note for NextJS Usage: Use `next-global-css` npm module setup for (v2 and below) and use dynamic import feature with `{ ssr: false }` to avoid errors
 
 ## Maintenance Status
 <img src="https://img.shields.io/badge/maintenance-stable-blue.svg" />
