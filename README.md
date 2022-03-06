@@ -1,6 +1,7 @@
 # React Floating Balloons 🎈💥
 
 **Version Updates**
+- [3.0.1] : Added optional `hangOnTop` feature, Added NextJS Example
 - [3.0.0] : Removed native elements, used `styled-components`. Added optional `loop` prop
 - [2.1.1] : Add optional custom props `count, msgText, colors, popVolumeLevel`
 - [2.0.2] : Add 2 new colors `orange, purple`
@@ -38,6 +39,7 @@ npm install --save react-floating-balloons
 | colors     | `Array<String>`                             | `false`  | `'yellow', 'green', 'blue', 'red', 'orange', 'purple'` | `['yellow', 'green', 'blue', 'red', 'orange', 'purple']` | list for balloons to choose random colors from                                      |
 | popVolumeLevel | `Float`                               | `false` | `0 to 1` | `0.5` |  Volume level for Balloon pop sound                         |
 | loop | `Boolean`                               | `false` | `true\|false` | `true` |  Loop Balloon animation until popped                         |
+| hangOnTop | `Boolean`                               | `false` | `true\|false` | `false` |  Hangs Balloons on top until popped(set `loop` to `false`)                         |
 
 ##
 ### [Todo]

@@ -4,7 +4,7 @@ import mojs from "@mojs/core";
 import {random, randomColor} from './utils';
 import {StyledBalloon} from './Balloon.styles';
 
-export const Balloon = ({msgText, colors, popVolumeLevel, loop, supportsTouch}) => {
+export const Balloon = ({msgText, colors, popVolumeLevel, loop, hangOnTop, supportsTouch}) => {
 	const delay = random(0, 4);
 	const hasMsg = random(0, 2);
 	const duration = 10 + random(1, 5);
@@ -51,6 +51,7 @@ export const Balloon = ({msgText, colors, popVolumeLevel, loop, supportsTouch}) 
 						rotate: random(20, 25),
 						left,
 						loop,
+						hangOnTop,
 					}}
 					show={show}
 					visible={visible}
@@ -68,7 +69,7 @@ export const Balloon = ({msgText, colors, popVolumeLevel, loop, supportsTouch}) 
 	)
 }
 
-export const Balloons = ({count, msgText, colors, popVolumeLevel, loop}) => {
+export const Balloons = ({count, msgText, colors, popVolumeLevel, loop, hangOnTop}) => {
   const density = count; // concurrent balloon count
 	const supportsTouch = 'ontouchstart' in window || navigator.msMaxTouchPoints;
   return (
@@ -77,7 +78,7 @@ export const Balloons = ({count, msgText, colors, popVolumeLevel, loop}) => {
 			new Array(density).fill(null).map((b, i) => 
 				<Balloon
 					key={`balloon-${i}`}
-					{...{msgText, colors, popVolumeLevel, loop, supportsTouch}}
+					{...{msgText, colors, popVolumeLevel, loop, hangOnTop, supportsTouch}}
 				/>
 			)
 		}

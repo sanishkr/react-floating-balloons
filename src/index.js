@@ -9,6 +9,7 @@ const ReactFloatingBalloons = ({
 	colors = ['yellow', 'green', 'blue', 'red', 'orange', 'purple'],
 	popVolumeLevel = 0.5,
 	loop = true,
+	hangOnTop = false,
 	// duration = 10000,
 	// delay = 100,
 	// name,
@@ -17,9 +18,12 @@ const ReactFloatingBalloons = ({
 	React.useEffect(() => {
 		setCSR(true)
 	}, []);
+	if(hangOnTop && loop) {
+		return new Error('`loop` has to be `false` for `hangOnTop` feature.');
+	}
 	return createPortal(
 		<div id='portal-balloons'>
-			{CSR ? <Balloons {...{count, msgText, colors, popVolumeLevel, loop}}/> : null}
+			{CSR ? <Balloons {...{count, msgText, colors, popVolumeLevel, loop, hangOnTop}}/> : null}
 		</div>,
 		document.body
 	);
