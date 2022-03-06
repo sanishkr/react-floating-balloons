@@ -1,6 +1,6 @@
 {
   "name": "react-floating-balloons",
-  "version": "2.1.1",
+  "version": "3.0.0",
   "description": "Floating colorful balloons with custom names and popping feature",
   "main": "dist/index.js",
   "dependencies": {
