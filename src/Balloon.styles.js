@@ -1,7 +1,7 @@
 import styled, {keyframes} from "styled-components";
 import { random } from "./utils";
 
-const balloonsLeftUpKFAnimation = ({x,y, left, rotate}) => {
+const balloonsLeftUpKFAnimation = ({x,y, left, hangOnTop, rotate}) => {
   // console.log({x,y, left, rotate});
   return keyframes`
   {
@@ -26,13 +26,13 @@ const balloonsLeftUpKFAnimation = ({x,y, left, rotate}) => {
       left: ${`${left+random(20,30)}vw`};
     }
     100%{
-      top: ${`${random(-60,-70)}vh`};
-      left: ${`${left-random(30,50)}vw`};
+      top: ${`${hangOnTop ? random(-2, 1) : random(-60,-70)}vh`};
+      left: ${`${hangOnTop ? random(0,50) : left-random(30,50)}vw`};
     }
   }
 `
 };
-const balloonsRightUpKFAnimation = ({x,y, left, rotate}) => {
+const balloonsRightUpKFAnimation = ({x,y, left, rotate, hangOnTop}) => {
   // console.log({x,y, left, rotate});
   return keyframes`
   {
@@ -53,8 +53,8 @@ const balloonsRightUpKFAnimation = ({x,y, left, rotate}) => {
       left: ${`${left-random(20,30)}vw`};
     }
     100%{
-      top: ${`${random(-60,-70)}vh`};
-      left: ${`${left+random(30,50)}vw`};
+      top: ${`${hangOnTop ? random(-2, 1) : random(-60,-70)}vh`};
+      left: ${`${hangOnTop ? random(0,50) : left+random(30,50)}vw`};
     }
   }
 `
@@ -81,6 +81,7 @@ export const StyledBalloon = styled.div`
   // animation-duration: 3s;
   animation-duration: ${props => `${props.animate.duration}s`};
   animation-delay ${props => `${props.animate.delay}s`};
+  animation-fill-mode: ${props => props.animate.hangOnTop ? 'forwards' : 'none'};
   transform-origin:bottom center;
   --balloonDimension: 15vmax; /* 15% of min(viewport width, height) */
   width: var(--balloonDimension);
